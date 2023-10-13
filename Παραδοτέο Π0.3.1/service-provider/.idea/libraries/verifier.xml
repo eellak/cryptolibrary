@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="verifier">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/server/ol-lib/verifier.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+[
+  {
+    "policyId": "testPolicy",
+    "attributeName": "url:name",
+    "operation": "REVEAL"
+
+  }
+  ]
+
+
