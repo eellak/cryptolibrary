@@ -1,0 +1,163 @@
+/* Import a Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+/* General styles for the body and background */
+body {
+    /* Background gradient */
+    background: linear-gradient(304deg, rgba(255, 255, 255, 1) 0%, rgb(2, 18, 120) 35%, rgb(116, 131, 132) 100%);
+    /* Reset margin and padding for various elements */
+    margin: 0;
+    padding: 0;
+    /* Set font-family and background color */
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Styles for the outer container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for the inner container */
+.inner_container {
+    background-color: #fff;
+    padding: 190px; /* Adjust padding as needed */
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Adjust box-shadow as needed */
+}
+
+/* Styles for the title section */
+.title_container {
+    text-align: center;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styles for images within the title */
+.title_container img {
+    width: 250px;
+    height: 160px;
+}
+
+/* Styles for the title text */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styles for the sidebar navigation */
+.sidebar {
+    /* Sidebar initially hidden */
+    width: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+}
+
+/* Styles for sidebar links */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.2s;
+}
+
+/* Hover styles for sidebar links */
+.sidebar a:hover {
+    color: #4CAF50;
+}
+
+/* Styles for the close button */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+}
+
+/* Styles for the main content */
+#main {
+    transition: margin-left .3s;
+    padding: 16px;
+}
+
+/* Styles for the open button */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    border: none;
+    color: white;
+}
+
+/* Hover styles for the open button */
+.openbtn:hover {
+    background-color: #4CAF50;
+}
+
+/* Error message styles */
+.error_container {
+    color: #cd101c;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Label and input styles */
+.label_container {
+    margin-top: 8px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+/* Styles for select and input elements */
+.check-menu-item,
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Button styles */
+.button_container,
+.button_container2,
+.button_container1 {
+    margin-top: 20px;
+}
+
+/* Styles for buttons */
+#fileupload,
+#upload-button,
+.button2,
+.button1,
+.button4,
+.button10 {
+    background-color: #ff140e; /* Change the background color as needed */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Additional styles can be added as needed */
+
+/* Media queries for responsive design can be added here */

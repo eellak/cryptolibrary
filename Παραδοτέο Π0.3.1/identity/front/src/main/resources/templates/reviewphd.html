@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage your account</title>
+    <link th:href="@{/css/form2.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="inner_container">
+        <div class="img_container" th:style="'background:url(/image/line-resized.jpg)'"></div>
+        <div class="box">
+            <div class="title_container">
+                <img src="/image/cybersecuoi1.png" width="250" height="160"/>
+                <h1>Application Form</h1>
+
+
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Application Category:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.applicationcategory : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Anticipated Entry Term:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.applicationentry : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Academic Programme:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.academicprogramme : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Mode of Study:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.modestudy : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Proposed research topic:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.proposedtopic : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Proposed research supervisor:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.proposedsupervisor : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman',sans-serif; ">Proposed research group:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.proposedgroup : 'N/A'}"></label>
+                </h5>
+
+                <h1>Academic Experience</h1>
+                <h5>Higher Education Institution</h5>
+                <h5>*Department Name (full or partial):
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.departmentname : 'N/A'}"></label>
+                </h5>
+                <h5>*University Name (full or partial):
+                    <label class="html-editor-align-justify" th:text="${applicationForm1?.applicationcategory}"></label>
+                </h5>
+                <h5>*Country:
+                    <label class="chtml-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.organizationcountry : 'N/A'}"></label>
+                </h5>
+                <h5><span style="font-size: 15px; color: #CCCCCC; font-family: 'Times New Roman'; ">Additional Institutions:</span>
+                    <label class="html-editor-align-justify" th:text="${applicationForm1 != null ? applicationForm1.additionalinstitutions : 'N/A'}"></label>
+                </h5>
+
+                <div class="button_container1">
+                    <a th:href="@{'http://localhost:8080/phdapplication'}" class="button1">Review your Application</a>
+                    <div class="button_container2">
+                        <a th:href="@{'http://localhost:10000/verifypresentation'}" class="button2">Submit Application</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

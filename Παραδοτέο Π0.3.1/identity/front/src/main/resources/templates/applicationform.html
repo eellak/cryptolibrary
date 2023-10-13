@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Application Form</title>
+    <link th:href="@{/css/master.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="container">
+    <div class="inner_container">
+        <!-- Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="#">Privacy Notice</a>
+            <a href="https://drive.google.com/file/d/1pxSatSyO8veLId-qDQ8eVl2oVSVbzcXq/view?usp=sharing">Application
+                Guide</a>
+            <a href="https://drive.google.com/file/d/1-irxW-NwKabHXH3V9FbFb6B9OR3GFnji/view?usp=sharing">Introduction to
+                ABCs</a>
+        </div>
+
+        <!-- Main content -->
+        <div id="main">
+            <button class="openbtn" onclick="openNav()">☰</button>
+        </div>
+
+        <!-- JavaScript for sidebar functionality -->
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "200px";
+                document.getElementById("main").style.marginLeft = "200px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+        </script>
+
+        <!-- Application Form Title -->
+        <div class="title_container">
+            <img src="/image/cybersecuoi1.png" width="250" height="160"/>
+            <label class="title">Postgraduate Studies-Academic
+                <p>Positions that lead to a MsC/PhD degree</p>
+            </label>
+        </div>
+
+        <!-- Error Messages -->
+        <div class="error_container" th:if="${unknownError}">
+            <div class="error">Something went wrong, please try again.</div>
+        </div>
+        <div class="error_container" th:if="${dateNotParsable}">
+            <div class="error">The date entered was invalid.</div>
+        </div>
+
+        <!-- Form -->
+        <div class="form_container">
+            <form th:action="@{/applicationform}" method="post" th:object="${applicationForm}">
+                <!-- Application Category -->
+                <div class="label_container">
+                    <label class="label" for="applicationcategory">Application Category:*</label>
+                </div>
+                <select name="applicationFormapplicationcategory" id="applicationcategory" class="check-menu-item"
+                        autofocus="autofocus"
+                        th:field="*{applicationcategory}" value="${applicationcategory}">
+                    <option value="Postgraduate MSc">Postgraduate MSc</option>
+                    <option value="Postgraduate PHD">Postgraduate PHD</option>
+                </select>
+                <br/>
+
+                <!-- Anticipated Entry Term -->
+                <div class="label_container">
+                    <label class="label" for="applicationentry">Anticipated Entry Term:*</label>
+                </div>
+                <select name="applicationForm.applicationentry" id="applicationentry" class="check-menu-item"
+                        autofocus="autofocus"
+                        th:field="*{applicationentry}" value="${applicationentry}">
+                    <option value="Summer 2021-2022">Summer 2021-2022</option>
+                </select>
+                <br/>
+
+                <!-- Academic Programme -->
+                <div class="label_container">
+                    <label class="label" for="academicprogramme">Academic Programme:*</label>
+                </div>
+                <select name="applicationForm.academicprogramme" type="text" id="academicprogramme"
+                        class="check-menu-item"
+                        autofocus="autofocus"
+                        th:field="*{academicprogramme}" value="${academicprogramme}">
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Educational Development Research (PhD)">Educational Development Research (PhD)
+                    </option>
+                </select>
+                <br/>
+
+                <!-- Mode of Study -->
+                <div class="label_container">
+                    <label class="label" for="modestudy">Mode of Study:*</label>
+                </div>
+                <select name="applicationForm.modestudy" id="modestudy" class="check-menu-item" autofocus="autofocus"
+                        th:field="*{modestudy}" value="${modestudy}">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                </select>
+                <br/>
+
+                <!-- Proposed Research Topic -->
+                <div class="label_container">
+                    <label class="label" for="proposedtopic">Proposed research topic:*</label>
+                </div>
+                <input type="text" id="proposedtopic" name="applicationForm.proposedtopic" class="form-control"
+                       autofocus="autofocus" th:field="*{proposedtopic}" value="${proposedtopic}"/>
+                <br/>
+
+                <!-- Proposed Research Supervisor -->
+                <div class="label_container">
+                    <label class="label" for="proposedsupervisor">Proposed research supervisor:*</label>
+                </div>
+                <input type="text" id="proposedsupervisor" name="applicationForm.proposedsupervisor"
+                       class="form-control"
+                       autofocus="autofocus" th:field="*{proposedsupervisor}" value="${proposedsupervisor}"/>
+                <br/>
+
+                <!-- Proposed Research Group -->
+                <div class="label_container">
+                    <label class="label" for="proposedgroup">Proposed research group:*</label>
+                </div>
+                <input type="text" id="proposedgroup" name="applicationForm.proposedgroup" class="form-control"
+                       autofocus="autofocus" th:field="*{proposedgroup}" value="${proposedgroup}"/>
+                <br/>
+
+                <!-- Upload CV -->
+                <h3><span style="font-size: 15px; color: #74070f; font-family: 'Times New Roman'; ">Please upload your CV*</span>
+                </h3>
+                <div class="button_container">
+                    <input id="fileupload" type="file" name="fileupload"/>
+                    <button id="upload-button" onclick="uploadFile(); return false"> Upload</button>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script>
+                        async function uploadFile() {
+                            let formData = new FormData();
+                            let response = await fetch('Anonymous\\Documents', {
+                                method: "POST",
+                                body: formData
+                            });
+                            if (response.status === 404) {
+                                swal({
+                                    title: "Privacy notice!",
+                                    text: "Your CV cannot contain your personal information like Name, birthdate, age etc.!",
+                                    icon: "warning",
+                                    button: "Ok",
+                                });
+                            }
+                        }
+                    </script>
+                </div>
+
+                <!-- Academic Experience -->
+                <h1>Academic Experience</h1>
+
+                <!-- Higher Education Institution -->
+                <div class="label_container">
+                    <h5>Higher Education Institution</h5>
+                    <label class="label" for="departmentname">Department Name (full or partial):*</label>
+                </div>
+                <select name="applicationForm.departmentname" type="text" id="departmentname" class="check-menu-item"
+                        autofocus="autofocus" th:field="*{departmentname}" value="${departmentname}">
+                    <option value="Department of Informatics and Telecommunications">Department of Informatics and
+                        Telecommunications
+                    </option>
+                </select>
+                <br/>
+
+                <!-- University Name -->
+                <div class="label_container">
+                    <label class="label" for="universityname">University Name (full or partial):*</label>
+                </div>
+                <select name="applicationForm.universityname" type="text" id="universityname" class="check-menu-item"
+                        autofocus="autofocus" th:field="*{universityname}" value="${universityname}">
+                    <option value="University of Ioannina">University of Ioannina</option>
+                </select>
+                <br/>
+
+                <!-- Country -->
+                <div class="label_container">
+                    <label class="label" for="organisationcountry">Country:</label>
+                </div>
+                <input type="text" id="organisationcountry" name="applicationForm.organizationcountry"
+                       class="form-control"
+                       autofocus="autofocus" th:field="*{organizationcountry}" value="${organizationcountry}"/>
+                <br/>
+
+                <!-- Additional Institutions -->
+                <div class="label_container">
+                    <label class="label" for="additionalinstitutions">Additional Institutions:*</label>
+                </div>
+                <input type="text" id="additionalinstitutions" name="applicationForm.additionalinstitutions"
+                       class="form-control" autofocus="autofocus" th:field="*{additionalinstitutions}"
+                       value="${additionalinstitutions}"/>
+                <br/>
+
+                <!-- Proof of MSc Degree -->
+                <h3><span style="font-size: 15px; color: #021278; font-family: 'Times New Roman'; ">*If you possess an academic title from University of Ioannina, you can use your privacy Attribute based Credential.</span>
+                </h3>
+                <br/>
+                <h3><span style="font-size: 15px; color: #cd101c; font-family: 'Times New Roman'; ">Please provide a proof of your M.Sc. degree here*</span>
+                </h3>
+
+                <div class="button_container2" align="center">
+                    <input class="button2" type="submit" value="Upload your Credential"/>
+                </div>
+                <div class="button_container1" align="center">
+                    <a th:href="@{'http://localhost:10000/login'}" class="button1">Abort your Application</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
