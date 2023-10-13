@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="core" />
+        <module name="oidc-demo-idp" />
+        <module name="cfp-usecase" />
+        <module name="front" />
+        <module name="rest-wrapper" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="core" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
